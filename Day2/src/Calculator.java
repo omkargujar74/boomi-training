@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 class Calculator implements ArithmeticOperations {
 
     @Override
@@ -9,6 +11,10 @@ class Calculator implements ArithmeticOperations {
         return num1 + num2;
     }
 
+    public BigInteger add(BigInteger num1, BigInteger num2) {
+        return num1.add(num2);
+    }
+
     @Override
     public int sub(int num1, int num2) {
         return num1 - num2;
@@ -16,6 +22,10 @@ class Calculator implements ArithmeticOperations {
 
     public double sub(double num1, double num2) {
         return num1 - num2;
+    }
+
+    public BigInteger sub(BigInteger num1, BigInteger num2) {
+        return num1.subtract(num2);
     }
 
     @Override

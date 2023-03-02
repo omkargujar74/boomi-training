@@ -17,7 +17,7 @@ public class DecimalFormatterDemo {
         int intVar = 100;
         String stringVar = "Omkar";
 
-        System.out.format("The value of " + "the float variable is " +
+        System.out.format("\n\tThe value of " + "the float variable is " +
                 "%.4f, while the value of the " + "integer variable is %d, " +
                 "and the string is %s", floatVar, intVar, stringVar);
     }
