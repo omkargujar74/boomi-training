@@ -4,27 +4,25 @@ import java.util.regex.Pattern;
 public class Day3Program {
     public static void main(String[] args) {
 
-        Pattern nameValidation = Pattern.compile("^[A-Z]{1}[a-z]{0,9}$");
-        Pattern emailValidation = Pattern.compile("^[A-za-z0-9._]+@[A-Za-z.]*$");
-
         Scanner scanner = new Scanner(System.in);
 
         StringBuilder email = new StringBuilder();
+        StringBuilder password = new StringBuilder();
 
         StringBuilder message = new StringBuilder();
         message.append("Hi my name is ,I Welcome you all");
 
         String name = null;
         String inputEmail;
+        String inputPassword;
 
         System.out.println("Enter your name in \"Name\" format");
         try {
 
             String inputName = scanner.next();
 
-            if (nameValidation.matcher(inputName).matches()) {
+            if (nameValidation(inputName)) {
                 message.insert(14, inputName);
-
                 try {
                     name = message.substring(14, 14 + inputName.length());
                 } catch (StringIndexOutOfBoundsException e) {
@@ -42,7 +40,7 @@ public class Day3Program {
 
         System.out.println("Enter Your email id");
         inputEmail = scanner.next();
-        if (emailValidation.matcher(inputEmail).matches()) {
+        if (emailValidation(inputEmail)) {
             email.append(inputEmail);
         } else {
             try {
@@ -52,11 +50,28 @@ public class Day3Program {
             }
         }
 
+        System.out.println("Enter Password it should contain at least 1 uppercase 1 lowercase and 1 special" +
+                "character and min 8 characters");
+        inputPassword = scanner.next();
+        if (passwordValidation(inputPassword)) {
+            password.append(inputPassword);
+        } else {
+            try {
+                throw new Exception("Invalid password format");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+
         System.out.println(email);
+        System.out.println(password);
         System.out.println(message);
         System.out.println("Name = " + name);
 
-        message.delete(14, 14 + name.length());
+        if (name != null) {
+            message.delete(14, 14 + name.length());
+        }
         System.out.println(message);
 
         //System.out.println("Enter String to check is it Palindrome");
@@ -75,6 +90,21 @@ public class Day3Program {
         String lowerCaseInput = originalString.toString().toLowerCase();
         String reverse = originalString.reverse().toString().toLowerCase();
         return lowerCaseInput.equals(reverse);
+    }
+
+    public static boolean nameValidation(String inputName) {
+        Pattern nameValidation = Pattern.compile("^[A-Z][a-z]{2,10}$");
+        return nameValidation.matcher(inputName).matches();
+    }
+
+    public static boolean emailValidation(String inputEmail) {
+        Pattern emailValidation = Pattern.compile("^[a-zA-Z0-9+._-]+@[A-Za-z]+[.][a-z]+$");
+        return emailValidation.matcher(inputEmail).matches();
+    }
+
+    public static boolean passwordValidation(String inputPassword) {
+        Pattern passwordValidation = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}");
+        return passwordValidation.matcher(inputPassword).matches();
     }
 
 }
