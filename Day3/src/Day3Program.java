@@ -1,10 +1,17 @@
+import java.io.File;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Day3Program {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
+
+        String FILE_NAME = "PersonalInfo.txt";
+        FileHandling fileHandling = new FileHandling(FILE_NAME);
+        if(!fileHandling.isExist(FILE_NAME))
+        {
+            fileHandling.createFile();
+        }
 
         StringBuilder email = new StringBuilder();
         StringBuilder password = new StringBuilder();
@@ -35,7 +42,7 @@ public class Day3Program {
         } catch (StringIndexOutOfBoundsException e) {
             System.out.println("offset of message.insert() is greater than length of String");
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         System.out.println("Enter Your email id");
@@ -46,7 +53,7 @@ public class Day3Program {
             try {
                 throw new Exception("Enter email in valid format");
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         }
 
@@ -59,7 +66,7 @@ public class Day3Program {
             try {
                 throw new Exception("Invalid password format");
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         }
 
@@ -74,23 +81,17 @@ public class Day3Program {
         }
         System.out.println(message);
 
-        //System.out.println("Enter String to check is it Palindrome");
-        StringBuilder inputString = new StringBuilder();
-        inputString.append("Dot saw I was Tod");
-        //inputString.append(scanner.nextLine());
-        if (checkPalindrome(inputString)) {
-            System.out.println("It is Palindrome");
-        } else {
-            System.out.println("It is not Palindrome");
+        if(email !=null && name !=null && password !=null){
+            PersonalInfo personalInfo = new PersonalInfo(name,email.toString(),password.toString());
+            fileHandling.addPersonalInfoToFile(personalInfo);
+            System.out.println(fileHandling.getPersonalInfoFromFile());
+        }
+        else {
+            System.out.println("Provided field is null");
         }
 
     }
 
-    public static boolean checkPalindrome(StringBuilder originalString) {
-        String lowerCaseInput = originalString.toString().toLowerCase();
-        String reverse = originalString.reverse().toString().toLowerCase();
-        return lowerCaseInput.equals(reverse);
-    }
 
     public static boolean nameValidation(String inputName) {
         Pattern nameValidation = Pattern.compile("^[A-Z][a-z]{2,10}$");
