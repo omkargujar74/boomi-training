@@ -14,14 +14,18 @@ public class JaxbDemo {
         Student student1 = new Student(1, "Omkar", "Gujar", 23);
         studentToXml(student1);
         Student fromXmlStudent = xmlToStudent();
-        System.out.println("First Name = " + fromXmlStudent.getFirstName() + " Last Name = " + fromXmlStudent.getLastName() + " Age = " + fromXmlStudent.getAge());
+        System.out.println("First Name = " + fromXmlStudent.getFirstName()
+                + " Last Name = " + fromXmlStudent.getLastName()
+                + " Age = " + fromXmlStudent.getAge());
 
         List<Student> students = getStudents();
         StudentList studentList = new StudentList(students);
         studentListToXml(studentList);
         StudentList fromXmlStudentList = xmlToStudentList();
         for (Student student : fromXmlStudentList.getStudents()) {
-            System.out.println("First Name = " + student.getFirstName() + " Last Name = " + student.getLastName() + " Age = " + student.getAge());
+            System.out.println("First Name = " + student.getFirstName()
+                    + " Last Name = " + student.getLastName()
+                    + " Age = " + student.getAge());
         }
     }
 
@@ -78,6 +82,10 @@ public class JaxbDemo {
     }
 
     public static List<Student> getStudents() {
-        return IntStream.range(1, 11).mapToObj(rollNumber -> new Student(rollNumber, "Student" + rollNumber, "LastName" + rollNumber, new Random().nextInt(16))).collect(Collectors.toList());
+        return IntStream.range(1, 11)
+                .mapToObj(rollNumber -> new Student(rollNumber, "Student"
+                        + rollNumber, "LastName"
+                        + rollNumber, new Random().nextInt(16)))
+                .collect(Collectors.toList());
     }
 }
