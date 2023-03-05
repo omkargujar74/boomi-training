@@ -1,7 +1,7 @@
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "student")
 public class Student {
     private int rollNumber;
     private String firstName;
@@ -19,18 +19,22 @@ public class Student {
     }
 
     //@XmlTransient //this field will not be part of marshaling
+    @XmlAttribute(name = "rollNumber")
     public int getRollNumber() {
         return rollNumber;
     }
 
+    @XmlAttribute(name = "firstName")
     public String getFirstName() {
         return firstName;
     }
 
+    @XmlAttribute(name = "lastName")
     public String getLastName() {
         return lastName;
     }
 
+    @XmlAttribute(name = "age")
     public int getAge() {
         return age;
     }
