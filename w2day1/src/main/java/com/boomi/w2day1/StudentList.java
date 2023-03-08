@@ -22,7 +22,7 @@ public class StudentList {
         }
         return null;
     }
-    private static List<Student> getStudentList(){
+    public static List<Student> getStudentList(){
         return IntStream.range(1,11)
                 .mapToObj(id -> new Student(id,"Student"+id,new Random().nextInt(20)))
                 .collect(Collectors.toList());

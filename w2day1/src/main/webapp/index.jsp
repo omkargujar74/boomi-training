@@ -2,12 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>CheckStudentInfo</title>
 </head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<style>
+    .center {
+        margin-left: 10px;
+        margin-right: auto;
+    }
+</style>
+<body class="center">
+<form action="getStudent.jsp" >
+    Enter Student Id (1-10)<input type="text" name="id"><br><br>
+    <input type="submit"><br><br>
+    <a href="getAllStudents.jsp">Get All Students</a>
+</form>
 </body>
 </html>
