@@ -1,4 +1,4 @@
-package com.boomi.model;
+package com.boomi.w2day3.model;
 
 public class Student {
     private int id;

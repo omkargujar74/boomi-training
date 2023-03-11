@@ -1,6 +1,6 @@
-package com.boomi.dao;
+package com.boomi.w2day3.dao;
 
-import com.boomi.model.Student;
+import com.boomi.w2day3.model.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -46,5 +46,46 @@ public class StudentDao {
                     resultSet.getInt(3)));
         }
         return students;
+    }
+
+    public boolean updateStudent(int id,String name,int age){
+        boolean status = false;
+        String query = "update student set Name=?,Age=? where ID=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,name);
+            preparedStatement.setInt(2,age);
+            preparedStatement.setInt(3,id);
+
+
+            int affectedRow = preparedStatement.executeUpdate();
+            if(affectedRow > 0) {
+                status = true;
+                System.out.println("Status = "+status);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    public boolean deleteStudent(int id){
+        boolean status = false;
+        String query = "delete from student where ID=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+
+            int affectedRow = preparedStatement.executeUpdate();
+            if(affectedRow > 0) {
+                status = true;
+                System.out.println("Status = "+status);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 }
