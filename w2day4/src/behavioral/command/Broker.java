@@ -1,6 +1,7 @@
 package behavioral.command;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Broker {
@@ -8,6 +9,8 @@ public class Broker {
 
     public void takeOrder(Order order){
         orders.add(order);
+        Iterator<Order> iterator = orders.iterator();
+        iterator.hasNext();
     }
 
     public void placeOrders(){
