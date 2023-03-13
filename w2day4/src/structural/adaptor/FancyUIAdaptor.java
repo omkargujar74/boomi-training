@@ -1,6 +1,6 @@
 package structural.adaptor;
 
-public class FancyUIAdaptor implements IMultiRestoApp{
+public class FancyUIAdaptor implements IMultiRestoApp {
     private FancyUI fancyUI;
 
     public FancyUIAdaptor() {
@@ -17,7 +17,7 @@ public class FancyUIAdaptor implements IMultiRestoApp{
         fancyUI.displayRecommendations(convertXmlDataToJsonData(xmlData));
     }
 
-    private JsonData convertXmlDataToJsonData(XmlData xmlData){
+    private JsonData convertXmlDataToJsonData(XmlData xmlData) {
         return new JsonData();
     }
 }

@@ -15,7 +15,7 @@ public class IteratorDemo {
         circularQueue.push(100);
 
         Iterator<Object> iterator = circularQueue.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
     }

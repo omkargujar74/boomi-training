@@ -1,6 +1,6 @@
 package structural.adaptor;
 
-public class MultiRestoApp implements IMultiRestoApp{
+public class MultiRestoApp implements IMultiRestoApp {
     @Override
     public void displayMenu(XmlData xmlData) {
         System.out.println("XmlData Menu");

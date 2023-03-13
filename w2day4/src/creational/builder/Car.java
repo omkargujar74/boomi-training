@@ -1,6 +1,6 @@
 package creational.builder;
 
-public class Car implements CarDesign{
+public class Car implements CarDesign {
     private String engine;
     private String tyre;
     private int capacity;

@@ -8,12 +8,12 @@ public class User implements Observer {
         this.name = name;
     }
 
-    public void subscribedChannel(Channel channel){
-        this.channel=channel;
+    public void subscribedChannel(Channel channel) {
+        this.channel = channel;
     }
 
     @Override
-    public void update(){
-        System.out.println("Hey "+name+" "+channel.getName()+" uploaded new video: "+channel.getVideoName());
+    public void update() {
+        System.out.println("Hey " + name + " " + channel.getName() + " uploaded new video: " + channel.getVideoName());
     }
 }

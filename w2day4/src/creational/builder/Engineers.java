@@ -7,13 +7,13 @@ public class Engineers {
         this.carManufacturer = carManufacturer;
     }
 
-    public void buildCar(){
+    public void buildCar() {
         carManufacturer.buildEngine();
         carManufacturer.addSeatingCapacity();
         carManufacturer.addTyres();
     }
 
-    public Car getCar(){
+    public Car getCar() {
         return this.carManufacturer.getCar();
     }
 }

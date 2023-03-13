@@ -1,6 +1,7 @@
 package behavioral.observer;
 
 public interface Observer {
-    Channel channel= null;
+    Channel channel = null;
+
     void update();
 }

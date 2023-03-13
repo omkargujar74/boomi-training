@@ -1,10 +1,10 @@
 package creational.builder;
 
-public class Suzuki implements CarManufacturer{
+public class Suzuki implements CarManufacturer {
     private Car car;
 
     public Suzuki() {
-       car = new Car();
+        car = new Car();
     }
 
     @Override

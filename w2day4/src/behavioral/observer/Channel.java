@@ -12,22 +12,22 @@ public class Channel {
         this.name = name;
     }
 
-    public void subscribe(User user){
+    public void subscribe(User user) {
         subscribers.add(user);
     }
 
-    public void unsubscribe(User user){
+    public void unsubscribe(User user) {
         subscribers.remove(user);
     }
 
-    private void notifySubscribers(){
-        for (User subscriber: subscribers) {
+    private void notifySubscribers() {
+        for (User subscriber : subscribers) {
             subscriber.update();
         }
     }
 
-    public void uploadNewVideo(String videoName){
-        this.videoName=videoName;
+    public void uploadNewVideo(String videoName) {
+        this.videoName = videoName;
         this.notifySubscribers();
     }
 

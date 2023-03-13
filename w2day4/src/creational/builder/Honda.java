@@ -1,6 +1,6 @@
 package creational.builder;
 
-public class Honda implements CarManufacturer{
+public class Honda implements CarManufacturer {
     private Car car;
 
     public Honda() {
@@ -22,7 +22,7 @@ public class Honda implements CarManufacturer{
         car.setSeatingCapacity(5);
     }
 
-    public Car getCar(){
+    public Car getCar() {
         return this.car;
     }
 }
