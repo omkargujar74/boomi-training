@@ -20,7 +20,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void testPasswordValidation(){
+    public void testPasswordValidation() {
         List<String> passwords = new ArrayList<>();
         passwords.add("okmam123");
         passwords.add("123knsncinn");
@@ -31,7 +31,7 @@ public class ValidationTest {
         passwords.add("tkcl@F0");
         passwords.add("dgcgG@*ju&$Y49u78h");
 
-        for (String password:passwords) {
+        for (String password : passwords) {
             assertFalse(Day3Program.passwordValidation(password));
         }
         assertTrue(Day3Program.passwordValidation("hdhG@fIB123"));

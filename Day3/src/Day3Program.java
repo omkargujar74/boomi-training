@@ -8,8 +8,7 @@ public class Day3Program {
 
         String FILE_NAME = "PersonalInfo.txt";
         FileHandling fileHandling = new FileHandling(FILE_NAME);
-        if(!fileHandling.isExist(FILE_NAME))
-        {
+        if (!fileHandling.isExist(FILE_NAME)) {
             fileHandling.createFile();
         }
 
@@ -81,12 +80,11 @@ public class Day3Program {
         }
         System.out.println(message);
 
-        if(email !=null && name !=null && password !=null){
-            PersonalInfo personalInfo = new PersonalInfo(name,email.toString(),password.toString());
+        if (email != null && name != null && password != null) {
+            PersonalInfo personalInfo = new PersonalInfo(name, email.toString(), password.toString());
             fileHandling.addPersonalInfoToFile(personalInfo);
             System.out.println(fileHandling.getPersonalInfoFromFile());
-        }
-        else {
+        } else {
             System.out.println("Provided field is null");
         }
 
