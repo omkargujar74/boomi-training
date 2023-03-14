@@ -104,7 +104,7 @@ public class Day3Program {
     }
 
     public static boolean passwordValidation(String inputPassword) {
-        Pattern passwordValidation = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}");
+        Pattern passwordValidation = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.])[a-zA-Z0-9!@#$%^&*.]{8,16}");
         return passwordValidation.matcher(inputPassword).matches();
     }
 
