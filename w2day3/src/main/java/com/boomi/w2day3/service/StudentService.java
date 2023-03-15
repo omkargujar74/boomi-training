@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class StudentService {
+
     private StudentDao studentDao;
 
     public StudentService() throws SQLException, ClassNotFoundException {
@@ -27,5 +28,9 @@ public class StudentService {
 
     public boolean deleteStudent(int id) {
         return studentDao.deleteStudent(id);
+    }
+
+    public Student getStudentByID(int id) {
+        return studentDao.getStudentByID(id);
     }
 }

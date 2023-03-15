@@ -81,5 +81,9 @@
 <br>
 <a class="link" href="getAllStudents.jsp" ><h3>Get All Students</h3></a>
 </form>
+<form action="getStudentByID.jsp" >
+    Enter Student Id<input type="text" name="id"><br><br>
+    <input type="submit"><br><br>
+</form>
 </body>
 </html>

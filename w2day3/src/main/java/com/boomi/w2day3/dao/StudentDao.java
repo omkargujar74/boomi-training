@@ -9,7 +9,7 @@ import java.util.List;
 public class StudentDao {
     Connection connection;
     public StudentDao() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/boomitraining","root","Omkar@2611");
     }
 
@@ -87,5 +87,25 @@ public class StudentDao {
             e.printStackTrace();
         }
         return status;
+    }
+
+    public Student getStudentByID(int id){
+        Student student = null;
+        String query = "select * from student where ID=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                student = new Student(resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getInt(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return student;
     }
 }
