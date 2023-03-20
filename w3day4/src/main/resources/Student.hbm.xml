@@ -1,0 +1,13 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.boomi.w3day4.model.Student" table="student">
+        <id name = "id" type = "int" column = "ID">
+<!--            <generator class="native"/>-->
+        </id>
+        <property name = "name" column = "Name" type = "string"/>
+        <property name = "age" column = "Age" type = "int"/>
+    </class>
+</hibernate-mapping>
