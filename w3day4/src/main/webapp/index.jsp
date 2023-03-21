@@ -64,11 +64,11 @@
     <tbody>
     <tr>
         <form action="addStudent.jsp" method="post">
-            <td><input type="text" name="id">
+            <td><input type="text" name="id" required>
             </td>
-            <td><input type="text" name="name">
+            <td><input type="text" name="name" required>
             </td>
-            <td><input type="text" name="age">
+            <td><input type="text" name="age" required>
             </td>
             <td>
                 <input class="addbutton" value="Add" type="submit">
@@ -78,11 +78,15 @@
     </tbody>
 </table>
 <br>
+<br>
 <a class="link" href="getAllStudents.jsp"><h3>Get All Students</h3></a>
-</form>
-<form action="getStudentByID.jsp">
-    Enter Student Id<input type="text" name="id"><br><br>
-    <input type="submit"><br><br>
-</form>
+<br><br>
+<div style="text-align: center">
+    <form action="getStudentByID.jsp">
+        Enter Student Id &nbsp;&nbsp;
+        <input type="text" name="id" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
 </body>
 </html>

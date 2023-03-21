@@ -52,7 +52,7 @@ public class StudentDao {
         Transaction transaction = session.beginTransaction();
         List<Student> students = new ArrayList<>();
         try {
-            List fromStudent = session.createQuery("From Student").list();
+            List fromStudent = session.createQuery("From Student S ORDER BY S.name").list();
             Iterator iterator = fromStudent.iterator();
             while (iterator.hasNext()) {
                 Student student = (Student) iterator.next();
