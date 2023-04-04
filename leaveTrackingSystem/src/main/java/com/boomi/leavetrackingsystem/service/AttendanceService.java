@@ -30,4 +30,8 @@ public class AttendanceService {
     public List<Attendance> getAttendanceByDate(LocalDate date) {
         return _attendanceDao.getAttendanceByDate(date);
     }
+
+    public boolean deleteAttendance(Attendance attendance) {
+        return _attendanceDao.deleteAttendance(attendance);
+    }
 }

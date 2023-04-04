@@ -60,6 +60,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Attendance</th>
+        <th></th>
     </tr>
     <tbody>
     <%
@@ -90,7 +91,7 @@
                     attendance = false;
             }
     %>
-    <form method="post" action="markAttendanceProcess.jsp" id="markAttendance">
+    <form method="post" action="deleteAttendance.jsp" id="deleteAttendance">
         <tr>
             <td><%= student.getId()%>
                 <input type="hidden" name="id" value="<%= student.getId()%>">
@@ -111,6 +112,9 @@
             <%
                 }
             %>
+            <td>
+                <input class="deletebutton" type="submit" value="Delete">
+            </td>
         </tr>
     </form>
     <% } %>

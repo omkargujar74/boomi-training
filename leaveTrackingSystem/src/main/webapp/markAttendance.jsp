@@ -70,7 +70,6 @@
             switch (subName) {
                 case "Power System II":
                     attendance = student.isPowerSystemII();
-                    System.out.println(attendance);
                     break;
 
                 case "Control System I":

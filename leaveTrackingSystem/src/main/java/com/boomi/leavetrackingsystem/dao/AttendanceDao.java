@@ -79,4 +79,21 @@ public class AttendanceDao {
         }
         return attendanceList;
     }
+
+    public boolean deleteAttendance(Attendance attendance) {
+        boolean status = false;
+        Session session = _sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            session.delete(attendance);
+            status = true;
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return status;
+    }
 }
