@@ -3,6 +3,7 @@ package com.boomi.leavetrackingsystem.service;
 
 import com.boomi.leavetrackingsystem.dao.AttendanceDao;
 import com.boomi.leavetrackingsystem.model.Attendance;
+import com.boomi.leavetrackingsystem.model.UserInfo;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +21,16 @@ public class AttendanceService {
 
     public boolean createAttendance(Attendance attendance) {
         System.out.println(attendance.getId());
-        return _attendanceDao.createAttendance(attendance);
+        UserInfoService userInfoService = new UserInfoService();
+        UserInfo userById = userInfoService.getUserById(attendance.getId());
+        attendance.setStudent(userById);
+        boolean status = _attendanceDao.createAttendance(attendance);
+        if (status) {
+            List<Attendance> studentAttendance = userById.getAttendance();
+            studentAttendance.add(attendance);
+            status = userInfoService.updateUser(userById);
+        }
+        return status;
     }
 
     public boolean markAttendance(Attendance attendance) {

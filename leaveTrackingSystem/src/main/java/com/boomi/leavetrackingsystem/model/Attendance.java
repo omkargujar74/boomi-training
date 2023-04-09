@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.time.LocalDate;
@@ -41,6 +42,9 @@ public class Attendance {
     @Type(type = "yes_no")
     @Column(name = "energy_audit_and_management")
     private boolean _energyAuditAndManagement;
+
+    @ManyToOne()
+    private UserInfo _student;
 
     public Attendance(int id, LocalDate date, boolean powerSystemII, boolean controlSystemI,
             boolean utilizationOfElectricEnergy, boolean designOfElectricMachines, boolean energyAuditAndManagement) {
@@ -118,5 +122,13 @@ public class Attendance {
 
     public void setName(String name) {
         _name = name;
+    }
+
+    public UserInfo getStudent() {
+        return _student;
+    }
+
+    public void setStudent(UserInfo student) {
+        _student = student;
     }
 }

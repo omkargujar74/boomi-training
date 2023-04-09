@@ -195,4 +195,23 @@ public class UserInfoDao {
         }
         return status;
     }
+
+    public boolean checkUserByUserName(String username) {
+        Session session = _sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        boolean status = false;
+
+        try {
+            Query query = session.createQuery("FROM UserInfo U where U._username = :username");
+            query.setParameter("username", username);
+            List list = query.list();
+            status = !list.isEmpty();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return status;
+    }
 }

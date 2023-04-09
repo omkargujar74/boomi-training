@@ -1,7 +1,6 @@
 // Copyright (c) 2023 Boomi, Inc.
 package com.boomi.leavetrackingsystem.model;
 
-import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
@@ -9,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import java.time.LocalDate;
@@ -44,6 +44,9 @@ public class UserInfo {
     private boolean _isPasswordChanged = false;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Subject> _subjects = new ArrayList<>();
+
+    @OneToMany(mappedBy = "_student")
+    private List<Attendance> _attendance;
 
     public UserInfo(int id, String firstName, String lastName, LocalDate dateOfBirth, int age, String userType,
             List<Subject> subjects) {
@@ -137,6 +140,14 @@ public class UserInfo {
 
     public void setPasswordChanged(boolean passwordChanged) {
         _isPasswordChanged = passwordChanged;
+    }
+
+    public List<Attendance> getAttendance() {
+        return _attendance;
+    }
+
+    public void setAttendance(List<Attendance> attendance) {
+        _attendance = attendance;
     }
 
     @Override

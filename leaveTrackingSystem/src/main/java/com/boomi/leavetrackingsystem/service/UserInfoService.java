@@ -7,7 +7,6 @@ import com.boomi.leavetrackingsystem.model.UserInfo;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -67,6 +66,10 @@ public class UserInfoService {
 
     public boolean deleteUser(int id) {
         return _userInfoDao.deleteUser(id);
+    }
+
+    public boolean checkUserByUserName(String username) {
+        return _userInfoDao.checkUserByUserName(username);
     }
 
     public UserInfo getUserWithDecodePassword(String username) {
