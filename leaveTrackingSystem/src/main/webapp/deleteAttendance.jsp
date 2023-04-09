@@ -28,7 +28,7 @@
         boolean status = attendanceService.deleteAttendance(attendance);
         if (status) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("seeAttendance.jsp");
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         } else {
             PrintWriter writer = response.getWriter();
             writer.print("<h2 style=\"color:red;\">Failed to delete Record</h2>");

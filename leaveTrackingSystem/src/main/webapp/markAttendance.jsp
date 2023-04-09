@@ -1,5 +1,4 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.boomi.leavetrackingsystem.model.UserInfo" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="com.boomi.leavetrackingsystem.service.AttendanceService" %>
