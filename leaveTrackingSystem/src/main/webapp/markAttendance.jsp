@@ -57,7 +57,7 @@
     </tr>
 </table>
 <table class="center" style="width:100%">
-    <caption style="text-align: center"><h2>Mark Attendance</h2></caption>
+    <caption style="text-align: center"><h2 style="font-weight: bold;color: #09223b">Mark Attendance</h2></caption>
     <thead>
     <tr>
         <th>ID</th>

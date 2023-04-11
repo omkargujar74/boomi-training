@@ -32,31 +32,21 @@
         class="button-18" role="button"
         onclick="window.location.href='adminHome.jsp'">Home
 </button>
-<%--<div style="float: left;margin-left: 50px; margin-top:10px;font-size: large;">--%>
-<%--    <form method="post">--%>
-<%--        <input type="hidden"--%>
-<%--               id="attendanceDate" name="attendanceDate"--%>
-<%--               style="width:150px;height: 30px" value="<%=attendanceDate%>"><br><br>--%>
-<%--        <input type="submit" formaction="createAttendanceRecord.jsp" value="Mark Attendance"--%>
-<%--               class="markAttendanceButton">--%>
-<%--    </form>--%>
-<%--</div>--%>
 <br><br><br>
 <table style="border-bottom-width: thick">
     <tr>
-    <td>
-        <p style="margin: 30px">
-        <h2>Subject : <%=subName%>
-        </h2>
-        <h3>Date : <%=attendanceDate%>
-        </h3>
-
-        </p>
-    </td>
+        <td>
+            <p style="margin: 30px">
+            <h2>Subject : <%=subName%>
+            </h2>
+            <h3>Date : <%=attendanceDate%>
+            </h3>
+            </p>
+        </td>
     </tr>
 </table>
 <table class="center" style="width:100%">
-    <caption style="text-align: center"><h2>Attendance</h2></caption>
+    <caption style="text-align: center"><h2 style="font-weight: bold;color: #09223b">Attendance</h2></caption>
     <thead>
     <tr>
         <th>ID</th>
@@ -65,6 +55,7 @@
         <th></th>
         <th></th>
     </tr>
+    </thead>
     <tbody>
     <%
         for (Attendance student : attendanceByDate) {
@@ -125,12 +116,11 @@
     </form>
     <% } %>
     </tbody>
-    </thead>
 </table>
-</body>
 <%
     } else {
         response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/");
     }
 %>
+</body>
 </html>

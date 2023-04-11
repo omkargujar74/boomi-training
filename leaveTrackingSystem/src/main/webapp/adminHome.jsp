@@ -87,7 +87,7 @@
 </form>
 <br><br><br>
 <table class="" style="width:100%">
-    <caption style="text-align: center"><h2>Student List</h2></caption>
+    <caption style="text-align: center"><h2 style="font-weight: bold;color: #09223b">Student List</h2></caption>
     <thead>
     <tr>
         <th>ID</th>
