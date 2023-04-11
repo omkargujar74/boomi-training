@@ -19,9 +19,9 @@ import java.util.List;
 public class Subject {
 
     @Id
-    @Column(name = "sub_id")
+    @Column(name = "sub_id",unique = true,nullable = false)
     private int _subId;
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String _name;
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "_subjects")
     private List<UserInfo> _users = new ArrayList<>();

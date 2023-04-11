@@ -32,17 +32,18 @@
         class="button-18" role="button"
         onclick="window.location.href='adminHome.jsp'">Home
 </button>
-<div style="float: left;margin-left: 50px; margin-top:10px;font-size: large;">
-    <form method="post">
-        <input type="hidden"
-               id="attendanceDate" name="attendanceDate"
-               style="width:150px;height: 30px" value="<%=attendanceDate%>"><br><br>
-        <input type="submit" formaction="createAttendanceRecord.jsp" value="Mark Attendance"
-               class="markAttendanceButton">
-    </form>
-</div>
+<%--<div style="float: left;margin-left: 50px; margin-top:10px;font-size: large;">--%>
+<%--    <form method="post">--%>
+<%--        <input type="hidden"--%>
+<%--               id="attendanceDate" name="attendanceDate"--%>
+<%--               style="width:150px;height: 30px" value="<%=attendanceDate%>"><br><br>--%>
+<%--        <input type="submit" formaction="createAttendanceRecord.jsp" value="Mark Attendance"--%>
+<%--               class="markAttendanceButton">--%>
+<%--    </form>--%>
+<%--</div>--%>
 <br><br><br>
-<table>
+<table style="border-bottom-width: thick">
+    <tr>
     <td>
         <p style="margin: 30px">
         <h2>Subject : <%=subName%>
@@ -52,6 +53,7 @@
 
         </p>
     </td>
+    </tr>
 </table>
 <table class="center" style="width:100%">
     <caption style="text-align: center"><h2>Attendance</h2></caption>
@@ -60,6 +62,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Attendance</th>
+        <th></th>
         <th></th>
     </tr>
     <tbody>
@@ -91,7 +94,7 @@
                     attendance = false;
             }
     %>
-    <form method="post" action="deleteAttendance.jsp" id="deleteAttendance">
+    <form method="post" id="deleteAttendance">
         <tr>
             <td><%= student.getId()%>
                 <input type="hidden" name="id" value="<%= student.getId()%>">
@@ -113,7 +116,10 @@
                 }
             %>
             <td>
-                <input class="deletebutton" type="submit" value="Delete">
+                <input class="editbutton" type="submit" value="Edit" formaction="editAttendance.jsp">
+            </td>
+            <td>
+                <input class="deletebutton" type="submit" value="Delete" formaction="deleteAttendance.jsp">
             </td>
         </tr>
     </form>

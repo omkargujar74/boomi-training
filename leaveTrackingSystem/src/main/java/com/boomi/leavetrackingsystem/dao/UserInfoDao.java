@@ -31,9 +31,7 @@ public class UserInfoDao {
         boolean status = false;
         Session session = _sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        String username = user.getFirstName() + "." + user.getLastName() + user.getId();
-        user.setUsername(username.toLowerCase());
-
+        System.out.println(user);
         try {
             Serializable save = session.save(user);
             for (Subject subject : subjects) {
@@ -183,9 +181,12 @@ public class UserInfoDao {
         try {
             Query query = session.createQuery("Delete From UserInfo U where U.id=:id");
             query.setParameter("id", id);
+            //Query query1 = session.createQuery("Delete From Attendance A where A._id=:id");
+            //query1.setParameter("id", id);
             int row = query.executeUpdate();
             if (row > 0) {
                 status = true;
+                //query1.executeUpdate();
             }
             transaction.commit();
         } catch (PersistenceException e) {

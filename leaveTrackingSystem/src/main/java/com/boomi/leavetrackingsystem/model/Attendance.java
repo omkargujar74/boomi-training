@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,29 +22,32 @@ import java.time.LocalDate;
 public class Attendance {
 
     @Id
+    @Column(name = "id",nullable = false)
     private int _id;
     @Id
+    @Column(name = "date",nullable = false)
     private LocalDate _date;
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String _name;
 
     @Type(type = "yes_no")
-    @Column(name = "power_system_II")
+    @Column(name = "power_system_II",nullable = false)
     private boolean _powerSystemII;
     @Type(type = "yes_no")
-    @Column(name = "control_system_I")
+    @Column(name = "control_system_I",nullable = false)
     private boolean _controlSystemI;
     @Type(type = "yes_no")
-    @Column(name = "utilization_of_electric_energy")
+    @Column(name = "utilization_of_electric_energy",nullable = false)
     private boolean _utilizationOfElectricEnergy;
     @Type(type = "yes_no")
-    @Column(name = "design_of_electric_machines")
+    @Column(name = "design_of_electric_machines",nullable = false)
     private boolean _designOfElectricMachines;
     @Type(type = "yes_no")
-    @Column(name = "energy_audit_and_management")
+    @Column(name = "energy_audit_and_management",nullable = false)
     private boolean _energyAuditAndManagement;
 
     @ManyToOne()
+    @JoinColumn(nullable = false)
     private UserInfo _student;
 
     public Attendance(int id, LocalDate date, boolean powerSystemII, boolean controlSystemI,

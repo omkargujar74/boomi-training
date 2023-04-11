@@ -20,16 +20,16 @@ public class Test {
 
     public static void main(String[] args) {
         SubjectService subjectService = new SubjectService();
-//        subjectService.addSubject(303146, "Power System II");
-//        subjectService.addSubject(303147, "Control System I");
-//        subjectService.addSubject(303148, "Utilization of Electric Energy");
-//        subjectService.addSubject(303149, "Design of Electric Machines");
-//        subjectService.addSubject(303150, "Energy Audit and Management ");
-//
-//        List<Subject> allSubjects = subjectService.getAllSubjects();
-//        for (Subject subject : allSubjects) {
-//            System.out.println(subject.toString());
-//        }
+//                subjectService.addSubject(303146, "Power System II");
+//                subjectService.addSubject(303147, "Control System I");
+//                subjectService.addSubject(303148, "Utilization of Electric Energy");
+//                subjectService.addSubject(303149, "Design of Electric Machines");
+//                subjectService.addSubject(303150, "Energy Audit and Management ");
+        ////
+        //        List<Subject> allSubjects = subjectService.getAllSubjects();
+        //        for (Subject subject : allSubjects) {
+        //            System.out.println(subject.toString());
+        //        }
 
         UserInfoService userInfoService = new UserInfoService();
         AttendanceService attendanceService = new AttendanceService();
@@ -38,11 +38,12 @@ public class Test {
         //        UserInfo userById = userInfoService.getUserById(1001);
         //        System.out.println(userById.isPasswordChanged());
 
-                        Subject subjectById = subjectService.getSubjectById(303146);
-                        List<Subject> subjects = new ArrayList<>();
-                        subjects.add(subjectById);
-                        userInfoService.addUser(101, "Ajit", "Kamble", LocalDate.of(1990, 05, 18), 32, "professor",
-                        subjects);
+        Subject subjectById = subjectService.getSubjectById(303146);
+        List<Subject> subjects = new ArrayList<>();
+        subjects.add(subjectById);
+        boolean b = userInfoService.addUser(101, "Ajit", "Kamble", LocalDate.of(1990, 05, 18), 32, "professor",
+                subjects);
+        System.out.println("Status............"+b);
 
         //        UserInfo userByUserName = userInfoService.getUserByUserName("Ajit.Kamble101");
         //        System.out.println("/////////////////////////////");
@@ -67,5 +68,6 @@ public class Test {
         //            user.setPassword(encodedPassword);
         //            userInfoService.updateUser(user);
         //        }
+
     }
 }

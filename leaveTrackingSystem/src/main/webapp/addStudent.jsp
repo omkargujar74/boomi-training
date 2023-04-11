@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>add_student</title>
+    <link rel="stylesheet" href="./style/homeButton.css">
 </head>
 <body>
 <%
@@ -34,9 +35,16 @@
         boolean status = userInfoService.addUser(id, firstName, lastName, localDateOfBirth, age, userType, allSubjects);
         if (status) {
             response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/adminHome.jsp");
-        } else {
-            PrintWriter writer = response.getWriter();
-            writer.print("<h2 style=\"color:red;\">Failed to add Student</h2>");
+        } else { %>
+<div style="text-align: center">
+<h2 style="color:red">Failed to add Student</h2>
+<h3>Please provide valid information</h3>
+<button style="margin-left: 20px"
+        class="button-18" role="button"
+        onclick="window.location.href='adminHome.jsp'">Home
+</button>
+</div>
+<%
         }
     } else {
         response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/");

@@ -33,11 +33,36 @@ public class AttendanceService {
         return status;
     }
 
-    public boolean markAttendance(Attendance attendance) {
-        return _attendanceDao.markAttendance(attendance);
+    public boolean markAttendance(LocalDate attendanceDate, int id, String subName, boolean attendance) {
+        Attendance attendanceByDateId = _attendanceDao.getAttendanceByDateId(attendanceDate, id);
+        switch (subName) {
+            case "Power System II":
+                attendanceByDateId.setPowerSystemII(attendance);
+                break;
+
+            case "Control System I":
+                attendanceByDateId.setControlSystemI(attendance);
+                break;
+
+            case "Utilization of Electric Energy":
+                attendanceByDateId.setUtilizationOfElectricEnergy(attendance);
+                break;
+
+            case "Design of Electric Machines":
+                attendanceByDateId.setDesignOfElectricMachines(attendance);
+                break;
+
+            case "Energy Audit and Management":
+                attendanceByDateId.setEnergyAuditAndManagement(attendance);
+                break;
+        }
+        return _attendanceDao.markAttendance(attendanceByDateId);
     }
 
-    public List<Attendance> getAttendanceByDate(LocalDate date) {
+    public Attendance getAttendanceByDateId(LocalDate date,int id) {
+        return _attendanceDao.getAttendanceByDateId(date, id);
+    }
+        public List<Attendance> getAttendanceByDate(LocalDate date) {
         return _attendanceDao.getAttendanceByDate(date);
     }
 

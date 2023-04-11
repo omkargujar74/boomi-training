@@ -7,6 +7,7 @@ import com.boomi.leavetrackingsystem.model.UserInfo;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Base64;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -17,19 +18,29 @@ import java.util.regex.Pattern;
 public class UserInfoService {
 
     private UserInfoDao _userInfoDao;
+    private CheckValidation _checkValidation;
 
     public UserInfoService() {
         _userInfoDao = new UserInfoDao();
+        _checkValidation = new CheckValidation();
     }
 
     public boolean addUser(int id, String firstName, String lastName, LocalDate dateOfBirth, int age, String userType,
             List<Subject> subjects) {
-        UserInfo user = new UserInfo(id, firstName, lastName, dateOfBirth, age, userType, subjects);
-        String password = user.getDateOfBirth().toString();
-        byte[] encoded = Base64.getEncoder().encode(password.getBytes(StandardCharsets.UTF_8));
-        String encodedPassword = new String(encoded);
-        user.setPassword(encodedPassword);
-        return _userInfoDao.addUser(user, subjects);
+        boolean status = false;
+        if (_checkValidation.ageValidation(dateOfBirth, age)) {
+            UserInfo user = new UserInfo(id, firstName, lastName, dateOfBirth, age, userType, subjects);
+            System.out.println(user.getSubjects());
+            user.setPasswordChanged(false);
+            String password = user.getDateOfBirth().toString();
+            byte[] encoded = Base64.getEncoder().encode(password.getBytes(StandardCharsets.UTF_8));
+            String encodedPassword = new String(encoded);
+            user.setPassword(encodedPassword);
+            String username = user.getFirstName() + "." + user.getLastName() + user.getId();
+            user.setUsername(username.toLowerCase());
+            status = _userInfoDao.addUser(user, subjects);
+        }
+        return status;
     }
 
     public UserInfo getUserById(int id) {
@@ -42,9 +53,7 @@ public class UserInfoService {
 
     public boolean changePassword(String username, String password) {
         boolean status = false;
-        Pattern passwordValidation = Pattern.compile(
-                "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.])[a-zA-Z0-9!@#$%^&*.]{8,16}");
-        if (passwordValidation.matcher(password).matches()) {
+        if (_checkValidation.passwordValidation(password)) {
             byte[] encoded = Base64.getEncoder().encode(password.getBytes(StandardCharsets.UTF_8));
             String encodedPassword = new String(encoded);
             status = _userInfoDao.changePassword(username, encodedPassword);

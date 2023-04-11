@@ -30,7 +30,17 @@
             studAttendance.setId(student.getId());
             studAttendance.setDate(localAttendanceDate);
             studAttendance.setName(student.getFirstName() + " " + student.getLastName());
-            attendanceService.createAttendance(studAttendance);
+            boolean status = attendanceService.createAttendance(studAttendance);
+            if (!status) { %>
+<div style="text-align: center">
+    <h2 style="color:red;">Failed to Create Attendance Sheet</h2>
+    <button style="float: left;margin-left: 20px"
+            class="button-18" role="button"
+            onclick="window.location.href='adminHome.jsp'">Home
+    </button>
+</div>
+<%
+            }
         }
         response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/markAttendance.jsp");
     } else {
