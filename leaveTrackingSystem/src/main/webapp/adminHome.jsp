@@ -65,13 +65,10 @@
       method="post">
     <h3>Add Student</h3>
     <br>
-    <input type="text" id="id" name="id" placeholder="Id" required><br><br>
+    <input type="number" id="id" name="id" placeholder="Id" required><br><br>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br><br>
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
-    <label for="userType">Choose User Type:</label>
-    <select name="userType" id="userType">
-        <option value="student" selected>Student</option>
-    </select><br><br>
+    <input type="hidden" name="userType" id="userType" value="student">
     <label for="dateOfBirth">Birthday:</label>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br><br>
     <input type="text" id="age" name="age" placeholder="Age" required><br><br>

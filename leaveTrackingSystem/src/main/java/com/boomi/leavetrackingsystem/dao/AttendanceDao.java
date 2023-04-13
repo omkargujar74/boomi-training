@@ -81,6 +81,24 @@ public class AttendanceDao {
         return attendanceList;
     }
 
+    public List<Attendance> getAttendanceById(int id) {
+        Session session = _sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Attendance> attendanceList = new ArrayList<>();
+
+        try {
+            Query<Attendance> query = session.createQuery("FROM Attendance A where A._id = :id");
+            query.setParameter("id", id);
+            attendanceList = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return attendanceList;
+    }
+
     public Attendance getAttendanceByDateId(LocalDate date,int id) {
         Session session = _sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();

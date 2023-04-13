@@ -23,24 +23,24 @@ import java.util.List;
 public class UserInfo {
 
     @Id
-    @Column(name = "Id",unique = true,nullable = false)
+    @Column(name = "Id", unique = true, nullable = false)
     private int _id;
-    @Column(name = "First_Name",nullable = false)
+    @Column(name = "First_Name", nullable = false)
     private String _firstName;
-    @Column(name = "Last_Name",nullable = false)
+    @Column(name = "Last_Name", nullable = false)
     private String _lastName;
-    @Column(name = "DOB",nullable = false)
+    @Column(name = "DOB", nullable = false)
     private LocalDate _dateOfBirth;
-    @Column(name = "Age",nullable = false)
+    @Column(name = "Age", nullable = false)
     private int _age;
-    @Column(name = "user_type",nullable = false)
+    @Column(name = "user_type", nullable = false)
     private String _userType;
-    @Column(name = "username",unique = true,nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String _username;
-    @Column(name = "password",nullable = false)
+    @Column(name = "password", nullable = false)
     private String _password;
     @Type(type = "true_false")
-    @Column(name = "is_password_changed",nullable = false)
+    @Column(name = "is_password_changed", nullable = false)
     private boolean _isPasswordChanged = false;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Subject> _subjects = new ArrayList<>();

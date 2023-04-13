@@ -4,7 +4,7 @@
 }
 
 table, td, th {
-    border: 1px solid #ddd;
+    border: 5px solid #ddd;
     text-align: center;
     font-size: large;
 }

@@ -28,10 +28,7 @@
     <input type="text" id="id" name="id" placeholder="Id" required><br><br>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br><br>
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
-    <label for="userType">User Type:</label>
-    <select name="userType" id="userType">
-        <option value="professor" selected>Professor</option>
-    </select><br><br>
+    <input type="hidden" name="userType" id="userType" value="professor">
     <label for="subject">Select Subject:</label>
     <select name="subject" id="subject">
         <option selected></option>

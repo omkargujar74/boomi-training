@@ -66,7 +66,11 @@ public class AttendanceService {
         return _attendanceDao.getAttendanceByDate(date);
     }
 
-    public boolean deleteAttendance(Attendance attendance) {
+    public List<Attendance> getAttendanceById(int id) {
+        return _attendanceDao.getAttendanceById(id);
+    }
+
+        public boolean deleteAttendance(Attendance attendance) {
         return _attendanceDao.deleteAttendance(attendance);
     }
 }
