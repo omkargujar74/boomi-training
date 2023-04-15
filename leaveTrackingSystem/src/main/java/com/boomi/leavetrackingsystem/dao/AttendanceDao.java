@@ -87,7 +87,7 @@ public class AttendanceDao {
         List<Attendance> attendanceList = new ArrayList<>();
 
         try {
-            Query<Attendance> query = session.createQuery("FROM Attendance A where A._id = :id");
+            Query<Attendance> query = session.createQuery("FROM Attendance A where A._id = :id ORDER BY _date");
             query.setParameter("id", id);
             attendanceList = query.list();
             transaction.commit();
@@ -99,7 +99,7 @@ public class AttendanceDao {
         return attendanceList;
     }
 
-    public Attendance getAttendanceByDateId(LocalDate date,int id) {
+    public Attendance getAttendanceByDateId(LocalDate date, int id) {
         Session session = _sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         List<Attendance> attendanceList = new ArrayList<>();
@@ -112,9 +112,9 @@ public class AttendanceDao {
             attendanceList = query.list();
             attendance = attendanceList.get(0);
             //            Iterator iterator = list.iterator();
-//            while (iterator.hasNext()) {
-//                attendanceList.add((Attendance) iterator.next());
-//            }
+            //            while (iterator.hasNext()) {
+            //                attendanceList.add((Attendance) iterator.next());
+            //            }
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,6 +132,27 @@ public class AttendanceDao {
         try {
             session.delete(attendance);
             status = true;
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return status;
+    }
+
+    public boolean deleteAttendanceByDate(LocalDate date) {
+        boolean status = false;
+        Session session = _sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            Query query = session.createQuery("DELETE FROM Attendance A WHERE A._date=:date");
+            query.setParameter("date", date);
+            int rows = query.executeUpdate();
+            if (rows > 0) {
+                status = true;
+            }
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

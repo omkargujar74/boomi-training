@@ -114,7 +114,6 @@ public class UserInfoDao {
             Query query = session.createQuery("From UserInfo U where U._userType =:type");
             query.setParameter("type", "student");
             List list = query.list();
-            System.out.println(list.size());
             Iterator iterator = list.iterator();
             while (iterator.hasNext()) {
                 UserInfo student = (UserInfo) iterator.next();
@@ -132,6 +131,24 @@ public class UserInfoDao {
             session.close();
         }
         return students;
+    }
+
+    public List<UserInfo> getAllProfessor() {
+        Session session = _sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<UserInfo> professors = new ArrayList<>();
+
+        try {
+            Query<UserInfo> query = session.createQuery("From UserInfo U where U._userType =:type");
+            query.setParameter("type", "professor");
+            professors = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return professors;
     }
 
     public List<UserInfo> getAllUsers() {

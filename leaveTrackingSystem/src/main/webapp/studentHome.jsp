@@ -43,7 +43,6 @@
                        id="attendanceDate" name="attendanceDate"
                        style="width:150px;height: 30px" required>
                 <input type="hidden" name="id" id="id" value="<%=student.getId()%>">
-                <br><br>
                 <input type="submit" formaction="seeStudentAttendance.jsp"
                        value="See Attendance" class="markAttendanceButton">
             </form>
@@ -61,32 +60,32 @@
 <table class="" style="width:100%;border: solid">
     <caption style="text-align: center"><h2 style="font-weight: bold;color: #09223b">Student Info</h2></caption>
     <tr>
-        <th>ID</th>
+        <th style="background-color: black">ID</th>
         <td><%= student.getId()%>
         </td>
     </tr>
     <tr>
-        <th>First Name</th>
+        <th style="background-color: black">First Name</th>
         <td><%= student.getFirstName()%>
         </td>
     </tr>
     <tr>
-        <th>Last Name</th>
+        <th style="background-color: black">Last Name</th>
         <td><%= student.getLastName()%>
         </td>
     </tr>
     <tr>
-        <th>DOB</th>
+        <th style="background-color: black">DOB</th>
         <td><%= student.getDateOfBirth() %>
         </td>
     </tr>
     <tr>
-        <th>Age</th>
+        <th style="background-color: black">Age</th>
         <td><%= student.getAge()%>
         </td>
     </tr>
     <tr>
-        <th rowspan="6" style="border:solid black">Subjects</th>
+        <th rowspan="<%=subjects.size()+1%>" style="border:solid black;background-color: black">Subjects</th>
             <%
             for (Subject subject: subjects) {%>
     <tr>

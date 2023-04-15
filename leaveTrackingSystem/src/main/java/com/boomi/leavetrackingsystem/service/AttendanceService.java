@@ -59,10 +59,11 @@ public class AttendanceService {
         return _attendanceDao.markAttendance(attendanceByDateId);
     }
 
-    public Attendance getAttendanceByDateId(LocalDate date,int id) {
+    public Attendance getAttendanceByDateId(LocalDate date, int id) {
         return _attendanceDao.getAttendanceByDateId(date, id);
     }
-        public List<Attendance> getAttendanceByDate(LocalDate date) {
+
+    public List<Attendance> getAttendanceByDate(LocalDate date) {
         return _attendanceDao.getAttendanceByDate(date);
     }
 
@@ -70,7 +71,11 @@ public class AttendanceService {
         return _attendanceDao.getAttendanceById(id);
     }
 
-        public boolean deleteAttendance(Attendance attendance) {
+    public boolean deleteAttendance(Attendance attendance) {
         return _attendanceDao.deleteAttendance(attendance);
+    }
+
+    public boolean deleteAttendanceByDate(LocalDate date) {
+        return _attendanceDao.deleteAttendanceByDate(date);
     }
 }

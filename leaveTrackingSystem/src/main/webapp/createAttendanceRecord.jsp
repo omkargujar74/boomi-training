@@ -14,24 +14,28 @@
 <html>
 <head>
     <title>createAttendanceRecord</title>
+    <link rel="stylesheet" href="./style/homeButton.css">
+    <link rel="stylesheet" href="./style/attendanceButton.css">
 </head>
 <body>
 <%
     if (session.getAttribute("isLogin") != null) {
+
         List<UserInfo> allStudents = (List<UserInfo>) session.getAttribute("allStudents");
         String attendanceDate = request.getParameter("attendanceDate");
         session.setAttribute("attendanceDate", attendanceDate);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localAttendanceDate = LocalDate.parse(attendanceDate, formatter);
         AttendanceService attendanceService = new AttendanceService();
-
-        for (UserInfo student : allStudents) {
-            Attendance studAttendance = new Attendance();
-            studAttendance.setId(student.getId());
-            studAttendance.setDate(localAttendanceDate);
-            studAttendance.setName(student.getFirstName() + " " + student.getLastName());
-            boolean status = attendanceService.createAttendance(studAttendance);
-            if (!status) { %>
+        List<Attendance> attendanceByDate = attendanceService.getAttendanceByDate(localAttendanceDate);
+        if (attendanceByDate.isEmpty()) {
+            for (UserInfo student : allStudents) {
+                Attendance studAttendance = new Attendance();
+                studAttendance.setId(student.getId());
+                studAttendance.setDate(localAttendanceDate);
+                studAttendance.setName(student.getFirstName() + " " + student.getLastName());
+                boolean status = attendanceService.createAttendance(studAttendance);
+                if (!status) { %>
 <div style="text-align: center">
     <h2 style="color:red;">Failed to Create Attendance Sheet</h2>
     <button style="float: left;margin-left: 20px"
@@ -40,9 +44,26 @@
     </button>
 </div>
 <%
-            }
         }
-        response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/markAttendance.jsp");
+    }
+    response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/markAttendance.jsp");
+} else {%>
+<div style="text-align: center">
+    <h2 style="color:red;">Attendance has already been marked for this date.</h2>
+    <form method="post">
+        <input type="hidden"
+               id="attendanceDate" name="attendanceDate"
+               style="width:150px;height: 30px" value="<%=attendanceDate%>">
+        <button style="margin-left: 20px"
+                class="button-18" role="button"
+                onclick="window.location.href='adminHome.jsp'">Home
+        </button>
+        <input type="submit" formaction="seeAttendance.jsp"
+               value="See Attendance" class="markAttendanceButton">
+    </form>
+</div>
+<%
+        }
     } else {
         response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/");
     }

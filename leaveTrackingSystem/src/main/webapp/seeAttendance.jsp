@@ -86,11 +86,11 @@
             }
     %>
     <form method="post" id="deleteAttendance">
+        <input type="hidden" name="id" value="<%= student.getId()%>">
+        <input type="hidden" name="attendanceDate" value="<%=attendanceDate%>">
+        <input type="hidden" name="name" value="<%=student.getName()%>">
         <tr>
             <td><%= student.getId()%>
-                <input type="hidden" name="id" value="<%= student.getId()%>">
-                <input type="hidden" name="attendanceDate" value="<%=attendanceDate%>">
-                <input type="hidden" name="name" value="<%=student.getName()%>">
             </td>
             <td><%= student.getName()%>
             </td>
@@ -115,6 +115,14 @@
         </tr>
     </form>
     <% } %>
+    <tr>
+        <td colspan="5" style="text-align: center">
+            <form method="post">
+                <input type="hidden" name="attendanceDate" value="<%=attendanceDate%>">
+                <input class="deletebutton" type="submit" value="Delete Record" formaction="deleteAttendanceByDate.jsp">
+            </form>
+        </td>
+    </tr>
     </tbody>
 </table>
 <%

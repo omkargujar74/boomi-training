@@ -45,15 +45,15 @@
 <br><br><br>
 <table style="border-bottom-width: thick">
     <tr>
-    <td>
-        <p style="margin: 30px">
-        <h3>Subject : <%=subName%>
-        </h3>
-        <h4>Date : <%=attendanceDate%>
-        </h4>
-        Note* by default attendance marked as absent
-        </p>
-    </td>
+        <td>
+            <p style="margin: 30px">
+            <h3>Subject : <%=subName%>
+            </h3>
+            <h4>Date : <%=attendanceDate%>
+            </h4>
+            Note* by default attendance marked as absent
+            </p>
+        </td>
     </tr>
 </table>
 <table class="center" style="width:100%">
@@ -64,10 +64,11 @@
         <th>Name</th>
         <th>Attendance</th>
     </tr>
+    </thead>
+    <tbody>
     <form method="post" action="markAttendanceProcess.jsp" id="markAttendance">
         <input type="hidden" name="size" id="size" value="<%=attendanceByDate.size()%>">
         <input type="hidden" name="attendanceDate" value="<%=attendanceDate%>">
-        <tbody>
         <%
             int index = 0;
             for (Attendance student : attendanceByDate) {
@@ -102,9 +103,8 @@
                 <input type="submit" name="submit" id="submit" class="button-18">
             </td>
         </tr>
-        </tbody>
     </form>
-    </thead>
+    </tbody>
 </table>
 </body>
 <%

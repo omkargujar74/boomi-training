@@ -59,6 +59,9 @@
     <button class="button-43"
             onclick="window.location.href='addProfessor.jsp'">Add Professor
     </button>
+    <button class="button-43"
+            onclick="window.location.href='seeProfessors.jsp'">See Professors
+    </button>
 </div>
 <form style="text-align: center;display: inline-block;margin-left: 25%;margin-top: 5%"
       action="addStudent.jsp"

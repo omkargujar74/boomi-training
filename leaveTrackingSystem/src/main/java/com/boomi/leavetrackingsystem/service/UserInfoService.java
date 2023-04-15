@@ -65,6 +65,10 @@ public class UserInfoService {
         return _userInfoDao.getAllStudents(sub_id);
     }
 
+    public List<UserInfo> getAllProfessor() {
+        return _userInfoDao.getAllProfessor();
+    }
+
     public List<UserInfo> getAllUsers() {
         return _userInfoDao.getAllUsers();
     }
