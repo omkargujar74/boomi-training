@@ -2,7 +2,6 @@
 package com.boomi.leavetrackingsystem.dao;
 
 import com.boomi.leavetrackingsystem.model.Attendance;
-import com.boomi.leavetrackingsystem.model.AttendanceCompositePK;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
