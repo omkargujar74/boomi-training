@@ -68,13 +68,17 @@
       method="post">
     <h3>Add Student</h3>
     <br>
+    <label for="id">ID:</label>
     <input type="number" id="id" name="id" placeholder="Id" required><br><br>
+    <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br><br>
+    <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
     <input type="hidden" name="userType" id="userType" value="student">
     <label for="dateOfBirth">Birthday:</label>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br><br>
-    <input type="text" id="age" name="age" placeholder="Age" required><br><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" placeholder="Age" required><br><br>
     <input type="submit" class="button-34" value="Add Student" id="addStudent"><br><br>
 </form>
 <br><br>

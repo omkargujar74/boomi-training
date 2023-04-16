@@ -26,11 +26,12 @@
         UserInfoService userInfoService = new UserInfoService();
         List<UserInfo> allProfessor = userInfoService.getAllProfessor();
         List<Subject> subjects = allSubjects.stream().filter(subject -> {
-            boolean status = true;
             for (UserInfo professor : allProfessor) {
-                status = !professor.getSubjects().get(0).getName().equals(subject.getName());
+                if(professor.getSubjects().get(0).getName().equals(subject.getName())){
+                    return false;
+                }
             }
-            return status;
+            return true;
         }).collect(Collectors.toList());
 %>
 <button style="float: left;margin-left: 20px"
@@ -42,8 +43,11 @@
       method="post">
     <h2>Add Professor</h2>
     <br>
-    <input type="text" id="id" name="id" placeholder="Id" required><br><br>
+    <label for="id">ID:</label>
+    <input type="number" id="id" name="id" placeholder="Id" required><br><br>
+    <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" required><br><br>
+    <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
     <input type="hidden" name="userType" id="userType" value="professor">
     <label for="subject">Select Subject:</label>
@@ -60,7 +64,8 @@
     </select><br><br>
     <label for="dateOfBirth">Birthday:</label>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br><br>
-    <input type="text" id="age" name="age" placeholder="Age" required><br><br><br>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" placeholder="Age" required><br><br><br>
     <input type="submit" class="button-34" value="Add Professor" id="addProfessor"><br><br>
 </form>
 <%
