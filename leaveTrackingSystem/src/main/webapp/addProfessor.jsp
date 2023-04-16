@@ -51,7 +51,7 @@
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
     <input type="hidden" name="userType" id="userType" value="professor">
     <label for="subject">Select Subject:</label>
-    <select name="subject" id="subject">
+    <select name="subject" id="subject" required>
         <option selected></option>
         <%
             for (Subject subject : subjects) {
@@ -63,7 +63,7 @@
         %>
     </select><br><br>
     <label for="dateOfBirth">Birthday:</label>
-    <input type="date" id="dateOfBirth" name="dateOfBirth"><br><br>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" required><br><br>
     <label for="age">Age:</label>
     <input type="number" id="age" name="age" placeholder="Age" required><br><br><br>
     <input type="submit" class="button-34" value="Add Professor" id="addProfessor"><br><br>
