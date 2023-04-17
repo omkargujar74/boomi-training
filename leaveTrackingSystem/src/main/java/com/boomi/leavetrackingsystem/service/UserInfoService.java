@@ -7,10 +7,8 @@ import com.boomi.leavetrackingsystem.model.UserInfo;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.Base64;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author omkargujar.
@@ -74,7 +72,11 @@ public class UserInfoService {
     }
 
     public boolean updateUser(UserInfo user) {
-        return _userInfoDao.updateUser(user);
+        boolean status = false;
+        if (_checkValidation.ageValidation(user.getDateOfBirth(), user.getAge())) {
+            status = _userInfoDao.updateUser(user);
+        }
+        return status;
     }
 
     public boolean deleteUser(int id) {
