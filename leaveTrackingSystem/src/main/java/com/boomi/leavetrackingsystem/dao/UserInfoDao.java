@@ -24,7 +24,7 @@ public class UserInfoDao {
     private SessionFactory _sessionFactory;
 
     public UserInfoDao() {
-        _sessionFactory = boomitrainingSessionFactory.getSessionFactory();
+        _sessionFactory = BoomitrainingSessionFactory.getSessionFactory();
     }
 
     public boolean addUser(UserInfo user, List<Subject> subjects) {
@@ -198,12 +198,9 @@ public class UserInfoDao {
         try {
             Query query = session.createQuery("Delete From UserInfo U where U.id=:id");
             query.setParameter("id", id);
-            //Query query1 = session.createQuery("Delete From Attendance A where A._id=:id");
-            //query1.setParameter("id", id);
             int row = query.executeUpdate();
             if (row > 0) {
                 status = true;
-                //query1.executeUpdate();
             }
             transaction.commit();
         } catch (PersistenceException e) {

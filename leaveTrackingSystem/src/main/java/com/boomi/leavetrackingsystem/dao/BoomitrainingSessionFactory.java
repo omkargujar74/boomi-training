@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 /**
  * @author omkargujar.
  */
-public class boomitrainingSessionFactory {
+public class BoomitrainingSessionFactory {
 
     private static final SessionFactory _SESSION_FACTORY;
 

@@ -22,7 +22,7 @@ public class AttendanceDao {
     private SessionFactory _sessionFactory;
 
     public AttendanceDao() {
-        _sessionFactory = boomitrainingSessionFactory.getSessionFactory();
+        _sessionFactory = BoomitrainingSessionFactory.getSessionFactory();
     }
 
     public boolean createAttendance(Attendance attendance) {
@@ -110,10 +110,6 @@ public class AttendanceDao {
             query.setParameter("id", id);
             attendanceList = query.list();
             attendance = attendanceList.get(0);
-            //            Iterator iterator = list.iterator();
-            //            while (iterator.hasNext()) {
-            //                attendanceList.add((Attendance) iterator.next());
-            //            }
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@ public class SubjectDao {
     private SessionFactory _sessionFactory;
 
     public SubjectDao() {
-        _sessionFactory = boomitrainingSessionFactory.getSessionFactory();
+        _sessionFactory = BoomitrainingSessionFactory.getSessionFactory();
     }
 
     public boolean addSubject(int subId, String name) {
