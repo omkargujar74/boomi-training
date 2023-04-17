@@ -51,7 +51,7 @@
             </h3>
             <h4>Date : <%=attendanceDate%>
             </h4>
-            Note* by default attendance marked as absent
+            <p style="color: red">Note* by default attendance marked as absent</p>
             </p>
         </td>
     </tr>
@@ -83,14 +83,12 @@
             <td>
                 <input type="radio" id="present<%=index%>" name="attendance<%=index%>"
                        value="true"
-                <%--                       onchange="submit()"--%>
                        style="width:150px;height: 20px"
                 >
                 <label for="present<%=index%>">Present</label>
                 <input type="radio" id="absent<%=index%>" name="attendance<%=index%>"
                        value="false"
-                <%--                       onchange="submit()"--%>
-                       style="width:150px;height: 20px"
+                       style="width:150px;height: 20px" checked
                 >
                 <label for="absent<%=index%>">Absent</label><br>
             </td>

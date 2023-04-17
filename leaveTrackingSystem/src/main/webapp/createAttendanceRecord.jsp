@@ -49,7 +49,7 @@
     response.sendRedirect("http://localhost:8080/leaveTrackingSystem_war_exploded/markAttendance.jsp");
 } else {%>
 <div style="text-align: center">
-    <h2 style="color:red;">Attendance has already been marked for this date.</h2>
+    <h2 style="color:red;">Attendance has already been marked for this date ( <%=attendanceDate%> ).</h2>
     <form method="post">
         <input type="hidden"
                id="attendanceDate" name="attendanceDate"
